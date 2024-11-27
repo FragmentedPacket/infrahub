@@ -11,6 +11,7 @@ node_modules/*
 development/docker-compose.override.yml
 development/docker-compose.dev-override.yml
 .DS_Store
+**/.ipynb_checkpoints
 .python-version
 .ruff_cache
 **/.ruff_cache
