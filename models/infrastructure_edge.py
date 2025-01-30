@@ -2156,6 +2156,13 @@ async def run(
         else:
             log.info(f"- Created {node._schema.kind} - {node.name.value}")
 
+    # Add local repository to main branch and have synced repo in all subsequent branches
+    log.info("Adding local repository to main branch")
+    try:
+        repo = await client.create(kind="CoreRepository", location="/remote/infrahub-demo-edge", name="demo-edge")
+        await repo.save()
+    except Exception as e:
+        log.warning(f"Failed to add local repository to main branch: {e}")
     account_pop = store.get("pop-builder", kind=CoreAccount, raise_when_missing=True)
 
     batch = await client.create_batch()
